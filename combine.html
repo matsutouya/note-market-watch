@@ -1,0 +1,199 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>note市場ウォッチ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#f5f6f8; --panel:#ffffff; --ink:#16213d; --ink-2:#40506f; --muted:#6b7793;
+  --line:#dde1e9; --line-2:#eceff4; --accent:#2b6fc0; --accent-2:#a8482a; --grid:#e3e7ee;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11151f; --panel:#171d2a; --ink:#e8ecf5; --ink-2:#b9c3d6; --muted:#8d99b3;
+    --line:#2a3244; --line-2:#212938; --accent:#5b9bea; --accent-2:#d4744c; --grid:#28303f;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11151f; --panel:#171d2a; --ink:#e8ecf5; --ink-2:#b9c3d6; --muted:#8d99b3;
+  --line:#2a3244; --line-2:#212938; --accent:#5b9bea; --accent-2:#d4744c; --grid:#28303f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  font-size:16px;line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px}
+.wrap-narrow{max-width:660px;margin:0 auto}
+h1,h2{font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(28px,4.2vw,40px);line-height:1.35;margin:.3em 0 .35em}
+h2{font-size:clamp(21px,2.6vw,27px);margin:0 0 .55em;padding-bottom:.4em;border-bottom:1px solid var(--line)}
+p{margin:0 0 1.15em;color:var(--ink-2)}
+strong{color:var(--ink);font-weight:600}
+.masthead{background:var(--panel);border-bottom:1px solid var(--line);padding:52px 0 34px}
+.eyebrow{font-size:12.5px;letter-spacing:.16em;color:var(--muted);margin:0;text-transform:none}
+.hint{font-size:12px;color:var(--muted);margin:6px 0 0}
+th[data-sort]{cursor:pointer;user-select:none;position:relative;padding-right:20px}
+th[data-sort]:hover{color:var(--ink)}
+th[data-sort]::after{content:"\2195";position:absolute;right:7px;opacity:.35;font-size:11px}
+th[data-sort][data-dir=desc]::after{content:"\2193";opacity:1;color:var(--accent)}
+th[data-sort][data-dir=asc]::after{content:"\2191";opacity:1;color:var(--accent)}
+th[data-sort]:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.rec{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent-2);border-radius:3px;padding:14px 16px}
+.rec-k{font-size:12.5px;color:var(--muted);margin:0 0 4px}
+.rec-v{font-size:19px;margin:0 0 8px;color:var(--ink);font-family:"Shippori Mincho",serif}
+.rec-v b{font-weight:600}
+.rec-why{font-size:13px;color:var(--muted);margin:0;line-height:1.7}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:12px 0}
+.th{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:8px;overflow:hidden}
+.th img{width:100%;height:auto;display:block;border-radius:2px;background:var(--line-2)}
+.th a{color:inherit;text-decoration:none;display:block}
+.th a:hover img{opacity:.85}
+.th figcaption{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.55;word-break:break-all}
+h3{font-size:17px;margin:28px 0 4px;font-family:"Shippori Mincho",serif;font-weight:600}
+.tcard{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+h4.mh{margin:22px 0 2px;font-size:15px;font-family:"Shippori Mincho",serif;font-weight:600;color:var(--ink)}
+.tcard h4{margin:0 0 6px;font-size:14.5px;font-family:"Shippori Mincho",serif;font-weight:600;color:var(--ink)}
+table.mini{font-size:13px}
+table.mini th,table.mini td{padding:5px 7px;white-space:nowrap}
+td.up{color:var(--accent-2);font-weight:600}
+span.up{color:var(--accent-2);font-weight:600}
+span.down{color:var(--muted)}
+td.down{color:var(--muted)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:var(--accent)}
+.status{font-size:13.5px;color:var(--muted);margin:0 0 18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.status .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;flex:none}
+nav.tabs{display:flex;gap:24px;margin:0 0 22px;border-bottom:1px solid var(--line)}
+nav.tabs a{padding:0 2px 9px;color:var(--muted);font-size:14.5px;border-bottom:2px solid transparent;margin-bottom:-1px}
+nav.tabs a:hover{color:var(--ink);border-bottom-color:var(--line)}
+nav.tabs a.on{color:var(--ink);font-weight:600;border-bottom-color:var(--accent-2)}
+nav.tabs a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.diffline{border-left:2px solid var(--accent);padding-left:12px;color:var(--ink-2)}
+p.wrap-narrow{margin-left:auto;margin-right:auto}   /* 注記の余白の指定が中央寄せを打ち消さないように */
+.tile-note{font-size:12.5px;color:var(--muted);margin:10px 0 0;max-width:70ch;line-height:1.7}
+.tile-note.notice{border-left:2px solid var(--accent-2);padding-left:12px;color:var(--ink-2)}
+.lede{max-width:62ch;font-size:16.5px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;margin:28px 0 0;
+  background:var(--line);border:1px solid var(--line)}
+.facts>div{background:var(--panel);padding:14px 16px}
+.facts dt{font-size:12.5px;color:var(--muted);margin:0 0 2px}
+.facts dd{margin:0;font-size:29px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.facts dd span{font-size:14px;font-weight:400;color:var(--muted);margin-left:3px}
+main{padding:8px 0 60px}
+section{margin:52px 0}
+.prose{max-width:660px;margin-inline:auto}
+.prose ul{margin:0;padding-left:1.15em;color:var(--ink-2)}
+.prose li{margin:.5em 0}
+.note{font-size:14.5px;color:var(--muted);margin:.7em 0 1.3em}
+.callout{margin:26px 0 8px;padding:22px 24px 18px;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent-2);border-radius:6px}
+.callout summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.callout summary::-webkit-details-marker{display:none}
+.callout summary h3{margin:0;flex:1 1 auto}
+.callout-open{font-size:13px;color:var(--muted)}
+.callout-open::after{content:" ▼"}
+.callout[open] .callout-open::after{content:" ▲"}
+.callout[open] .callout-open{font-size:0}
+.callout[open] .callout-open::after{font-size:13px;content:"閉じる ▲"}
+.callout[open] summary{margin-bottom:12px}
+.callout-tag{display:inline-block;margin:0;padding:1px 10px;font-size:12.5px;font-weight:600;color:#fff;background:var(--accent-2);border-radius:999px}
+.callout h3{margin:.2em 0 .5em;font-size:clamp(19px,2.3vw,23px)}
+.callout p{color:var(--ink-2)}
+.callout-list{margin:12px 0 0;padding-left:1.15em;color:var(--ink-2);font-size:14.5px}
+.callout-list li{margin:.35em 0}
+figure.relist{margin:16px 0 8px;padding:14px 12px 4px;background:var(--paper);overflow-x:auto}
+figure.relist svg{width:100%;height:auto;min-width:520px;display:block}
+.rs-box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.rs-dot{fill:var(--accent-2)}
+.rs-n{fill:#fff;font-size:16px;font-weight:700;font-family:"Zen Kaku Gothic New",sans-serif}
+.rs-h{fill:var(--ink);font-size:17px;font-weight:700;font-family:"Zen Kaku Gothic New",sans-serif}
+.rs-t{fill:var(--ink-2);font-size:15px;font-family:"Zen Kaku Gothic New",sans-serif}
+.rs-arrow{fill:none;stroke:var(--accent-2);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.rs-cap{fill:var(--muted);font-size:12px;font-family:"Zen Kaku Gothic New",sans-serif}
+figure{margin:18px 0 8px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:18px 14px 8px;overflow-x:auto}
+.chart{width:100%;height:auto;display:block;min-width:520px}
+.chart .grid{stroke:var(--grid);stroke-width:1}
+.chart .ax{fill:var(--muted);font-size:12px;font-family:"Zen Kaku Gothic New",sans-serif}
+.chart .ax.sm{font-size:10.5px}
+.chart .val{fill:var(--ink-2);font-size:11.5px;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:20px;font-size:13px;color:var(--muted);margin:0 0 6px 6px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.smalls{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.small figcaption{font-family:"Shippori Mincho",serif;font-size:15px;margin:0 0 4px 6px;color:var(--ink)}
+.small .chart{min-width:330px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line-2);white-space:nowrap}
+thead th{font-size:12.5px;color:var(--muted);font-weight:500;border-bottom:1px solid var(--line);background:var(--panel)}
+tbody th{font-weight:600;color:var(--ink)}
+td{color:var(--ink-2)}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+.strong{color:var(--accent-2);font-weight:600}
+.words{white-space:normal;min-width:190px;color:var(--muted)}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);max-width:660px;margin-inline:auto}
+footer p{color:var(--muted);margin:0}
+@media (max-width:640px){ .wrap{padding:0 18px} .facts dd{font-size:24px} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.filter{margin:0 0 12px;font-size:14px;color:var(--ink-2)}
+.filter select{font:inherit;padding:4px 8px;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--ink)}
+td.title{white-space:normal;min-width:260px;max-width:420px}
+.tag{display:inline-block;font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 8px;margin:1px 2px}
+.idea{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent-2);border-radius:3px;padding:14px 18px;margin:0 0 14px}
+.idea h3{margin:0 0 6px}
+.idea p{margin:0 0 .5em;font-size:14.5px}
+.idea ul{margin:.3em 0 0;padding-left:1.2em;font-size:14px;color:var(--ink-2)}
+</style></head><body>
+<header class="masthead"><div class="wrap"><p class="eyebrow">note市場ウォッチ・2026-10-06 20:45時点</p>
+<h1>noteとSNS（X・Threads・YouTube）の正しい掛け合わせ方</h1><p class="lede">題名にSNSの名前を入れた有料記事が、入れていない有料記事より買われているかを、noteの公開データで比べています。</p></div></header>
+<main><div class="wrap"><nav class="tabs" aria-label="見るページの切り替え" style="flex-wrap:wrap;gap:6px 22px"><a href="index.html">ジャンル一覧</a><a href="ranking.html">売れている有料記事</a><a href="price.html">価格帯</a><a href="words.html">題名の言葉とハッシュタグ</a><a href="creators.html">作者</a><a href="rising.html">伸びている記事</a><a href="trend.html">売れ行きの推移</a><a href="combine.html" class="on" aria-current="page">noteとSNSの掛け合わせ</a><a href="ideas.html">マネタイズのアイデア</a></nav>
+<p>題名にSNSの名前（X・Threads・YouTube・Instagram・TikTok）を入れた有料記事が、入れていない有料記事より買われているかを比べています。比べる相手は、SNSの名前を入れていない有料記事のうち、SNS運用・副業・稼ぐ・note・コンテンツ販売・ブログ・アフィリエイト・起業・マーケティング・AI活用のどれかに入っている記事です。「買われている」は、評価が1人以上付いたことで見ています。</p><p class="note">測れるのは題名・価格・評価の人数・作者のnoteフォロワー数だけです。SNSのフォロワー数や投稿の数は取っていないので、SNSからnoteへ読者が来たかどうかは分かりません。題名にSNSの名前がある記事の数字なので、因果は分かりません。</p><section><h2>数字から出した結果</h2><div class="idea"><ul><li>X（旧Twitter）の名前を題名に入れた有料記事（121本・作者97人）は評価が1人以上付いた割合は44%で、SNSの名前を入れていない稼ぎ系の有料記事（19%）の2.32倍です。</li></ul></div><div class="idea"><ul><li>Threadsの名前を題名に入れた有料記事（126本・作者101人）は評価が1人以上付いた割合は58%で、SNSの名前を入れていない稼ぎ系の有料記事（19%）の3.07倍です。</li></ul></div><div class="idea"><ul><li>YouTubeの名前を題名に入れた有料記事（63本・作者58人）は評価が1人以上付いた割合は38%で、SNSの名前を入れていない稼ぎ系の有料記事（19%）の2.02倍です。</li></ul></div><div class="idea"><ul><li>Instagramの名前を題名に入れた有料記事（71本・作者60人）は評価が1人以上付いた割合は27%で、SNSの名前を入れていない稼ぎ系の有料記事（19%）の1.42倍です。</li></ul></div><div class="idea"><ul><li>TikTokの名前を題名に入れた有料記事は36本・作者23人で、評価が1人以上付いた割合は22%です（売上の半分以上が1人の作者のため、判定しません）。</li></ul></div><div class="idea"><ul><li>X（旧Twitter）とnoteの名前を両方入れた題名の有料記事（21本・作者20人）は評価が1人以上付いた割合は67%で、X（旧Twitter）の名前だけを入れた題名（39%）の1.71倍です。</li></ul></div><div class="idea"><ul><li>Threadsとnoteの名前を両方入れた題名の有料記事（32本）は62%で、Threadsの名前だけの題名（56%）との差は小さいです。</li></ul></div><div class="idea"><ul><li>作者のnoteフォロワーが99人以下の有料記事は、SNSの名前を入れても評価が1人以上付いた割合は3%です（120本・作者111人。SNSの名前なしの稼ぎ系は1%）。</li></ul></div><div class="idea"><ul><li>作者のnoteフォロワーが100〜999人の有料記事は、SNSの名前を入れると54%です（140本・作者106人。SNSの名前なしの稼ぎ系は14%）。</li></ul></div><div class="idea"><ul><li>SNSの名前を入れた有料記事のうち、題名に「運用・伸ばす」系の言葉もある記事は評価が1人以上付いた割合は70%です（82本・作者67人）。</li></ul></div><div class="idea"><ul><li>同じく「テンプレ・プロンプト・マニュアル」系の言葉がある記事は16%です（32本・作者26人）。</li></ul></div></section><section><h2>SNSごとの売れ方</h2><div class="tablewrap"><table><thead><tr><th class="" data-sort="1" aria-sort="none" tabindex="0">SNSの名前を題名に入れた有料記事</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">有料記事（本）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価が1人以上の割合</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">比べる相手との倍率</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">価格の中央値</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">売上の下限</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">売上1位の作者が占める割合</th><th class="" data-sort="1" aria-sort="none" tabindex="0">注意</th></tr></thead><tbody><tr><td class="">X（旧Twitter）</td><td class="n">121</td><td class="n">97</td><td class="n">44%</td><td class="n">2.32倍</td><td class="n">600円</td><td class="n">7,087,360円</td><td class="n">17%</td><td class="">—</td></tr><tr><td class="">Threads</td><td class="n">126</td><td class="n">101</td><td class="n">58%</td><td class="n">3.07倍</td><td class="n">1,980円</td><td class="n">49,024,450円</td><td class="n">20%</td><td class="">—</td></tr><tr><td class="">YouTube</td><td class="n">63</td><td class="n">58</td><td class="n">38%</td><td class="n">2.02倍</td><td class="n">980円</td><td class="n">2,168,890円</td><td class="n">23%</td><td class="">—</td></tr><tr><td class="">Instagram</td><td class="n">71</td><td class="n">60</td><td class="n">27%</td><td class="n">1.42倍</td><td class="n">980円</td><td class="n">1,968,820円</td><td class="n">24%</td><td class="">—</td></tr><tr><td class="">TikTok</td><td class="n">36</td><td class="n">23</td><td class="n">22%</td><td class="n">1.18倍</td><td class="n">980円</td><td class="n">26,167,760円</td><td class="n">98%</td><td class="">売上の半分以上が1人の作者</td></tr><tr><td class="">どれかの名前を入れた記事の合計</td><td class="n">398</td><td class="n">301</td><td class="n">43%</td><td class="n">2.27倍</td><td class="n">980円</td><td class="n">85,173,040円</td><td class="n">30%</td><td class="">—</td></tr><tr><td class="">比べる相手：SNSの名前なし・稼ぎ系6ジャンル</td><td class="n">2017</td><td class="n">1345</td><td class="n">19%</td><td class="n">1.00倍</td><td class="n">500円</td><td class="n">94,858,338円</td><td class="n">25%</td><td class="">—</td></tr></tbody></table></div><p class="hint">見出しをクリックすると並べ替えできます。</p></section><section><h2>SNSとnoteの名前を両方入れた題名</h2><p>SNSの名前が入った有料記事を、題名にnoteの名前もある記事とない記事に分けています。どちらも10本以上あるSNSだけを出しています。</p><div class="tablewrap"><table><thead><tr><th class="" data-sort="1" aria-sort="none" tabindex="0">SNS</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">noteも入れた（本）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価が1人以上の割合</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">売上の下限</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">SNSだけ（本）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価が1人以上の割合</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">倍率</th></tr></thead><tbody><tr><td class="">X（旧Twitter）</td><td class="n">21</td><td class="n">20</td><td class="n">67%</td><td class="n">2,347,460円</td><td class="n">100</td><td class="n">78</td><td class="n">39%</td><td class="n">1.71倍</td></tr><tr><td class="">Threads</td><td class="n">32</td><td class="n">32</td><td class="n">62%</td><td class="n">8,579,160円</td><td class="n">94</td><td class="n">70</td><td class="n">56%</td><td class="n">1.11倍</td></tr></tbody></table></div><p class="hint">見出しをクリックすると並べ替えできます。</p></section><section><h2>作者のnoteフォロワー数ごと</h2><p>作者のnoteのフォロワー数で分けています。SNSのフォロワー数ではありません。</p><div class="tablewrap"><table><thead><tr><th class="" data-sort="1" aria-sort="none" tabindex="0">作者のnoteフォロワー</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">SNSの名前あり（本）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価が1人以上の割合</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">SNSの名前なし・稼ぎ系（本）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価が1人以上の割合</th></tr></thead><tbody><tr><td class="">99人以下</td><td class="n">120</td><td class="n">111</td><td class="n">3%</td><td class="n">1040</td><td class="n">762</td><td class="n">1%</td></tr><tr><td class="">100〜999人</td><td class="n">140</td><td class="n">106</td><td class="n">54%</td><td class="n">456</td><td class="n">318</td><td class="n">14%</td></tr><tr><td class="">1,000〜9,999人</td><td class="n">123</td><td class="n">74</td><td class="n">63%</td><td class="n">428</td><td class="n">221</td><td class="n">54%</td></tr><tr><td class="">1万人以上</td><td class="n">15</td><td class="n">10</td><td class="n">87%</td><td class="n">93</td><td class="n">44</td><td class="n">80%</td></tr></tbody></table></div><p class="hint">見出しをクリックすると並べ替えできます。</p></section><section><h2>SNSの名前と一緒に入れた言葉</h2><p>SNSの名前を入れた有料記事を、題名の言葉で分けています。10本以上・作者8人以上のものだけです。1つの題名が複数の行に入ることがあります。</p><div class="tablewrap"><table><thead><tr><th class="" data-sort="1" aria-sort="none" tabindex="0">題名の言葉</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">有料記事（本）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価が1人以上の割合</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">価格の中央値</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">売上の下限</th></tr></thead><tbody><tr><td class="">運用・伸ばす</td><td class="n">82</td><td class="n">67</td><td class="n">70%</td><td class="n">1,480円</td><td class="n">10,734,935円</td></tr><tr><td class="">フォロワーを増やす</td><td class="n">61</td><td class="n">55</td><td class="n">49%</td><td class="n">1,480円</td><td class="n">13,902,241円</td></tr><tr><td class="">収益化・稼ぐ</td><td class="n">81</td><td class="n">74</td><td class="n">46%</td><td class="n">1,300円</td><td class="n">16,083,860円</td></tr><tr><td class="">ネタ・投稿の書き方</td><td class="n">78</td><td class="n">65</td><td class="n">27%</td><td class="n">980円</td><td class="n">4,244,700円</td></tr><tr><td class="">ツール・アプリ</td><td class="n">14</td><td class="n">11</td><td class="n">21%</td><td class="n">500円</td><td class="n">314,080円</td></tr><tr><td class="">自動化・AI</td><td class="n">89</td><td class="n">71</td><td class="n">20%</td><td class="n">980円</td><td class="n">5,979,249円</td></tr><tr><td class="">テンプレ・プロンプト・マニュアル</td><td class="n">32</td><td class="n">26</td><td class="n">16%</td><td class="n">500円</td><td class="n">2,464,920円</td></tr></tbody></table></div><p class="hint">見出しをクリックすると並べ替えできます。</p></section><section><h2>SNSの名前を入れた有料記事で、売上の下限が大きい記事</h2><div class="tablewrap"><table><thead><tr><th class="" data-sort="1" aria-sort="none" tabindex="0">題名</th><th class="" data-sort="1" aria-sort="none" tabindex="0">SNS</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">価格</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">評価（人）</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">売上の下限</th><th class="n" data-sort="1" aria-sort="none" tabindex="0">作者のnoteフォロワー</th></tr></thead><tbody><tr><td class="title"><a href="https://note.com/kuroneko_mikoo/n/n8d14c9a760df" target="_blank" rel="noreferrer">「TikTok×ASPアフィリエイト」&quot;0から始める実践ガイド&quot;みーこ式</a></td><td class="">TikTok</td><td class="n">34,800円</td><td class="n">519</td><td class="n">18,061,200円</td><td class="n">1,903</td></tr><tr><td class="title"><a href="https://note.com/okirumama/n/n430e5cd21588" target="_blank" rel="noreferrer">【スレッズ✖️主婦の副業】おきるママのスレッズ脱サラ計画へようこそ💫</a></td><td class="">Threads</td><td class="n">39,800円</td><td class="n">250</td><td class="n">9,950,000円</td><td class="n">5,912</td></tr><tr><td class="title"><a href="https://note.com/kuroneko_mikoo/n/n364dd8ae601f" target="_blank" rel="noreferrer">【TikTok Shopアフィリエイト】未経験OK！完全ロードマップ&quot;みーこ式&quot;</a></td><td class="">TikTok</td><td class="n">44,800円</td><td class="n">166</td><td class="n">7,436,800円</td><td class="n">1,903</td></tr><tr><td class="title"><a href="https://note.com/yuricchan/n/n6470639c507d" target="_blank" rel="noreferrer">【新特典🎉600部突破🎉】Threadsフォロワー２００人でも月３万達成。私が最初にやったこと、全部書きます。</a></td><td class="">Threads</td><td class="n">25,980円</td><td class="n">281</td><td class="n">7,300,380円</td><td class="n">518</td></tr><tr><td class="title"><a href="https://note.com/osaku_note/n/n462a73838eb7" target="_blank" rel="noreferrer">Threads ×楽天アフィリエイトの教科書</a></td><td class="">Threads</td><td class="n">10,980円</td><td class="n">301</td><td class="n">3,304,980円</td><td class="n">1,908</td></tr><tr><td class="title"><a href="https://note.com/restart_ta_ma/n/n913d5ab3836f" target="_blank" rel="noreferrer">【初心者でも3ヶ月で50万！】低単価沼から脱出！ゼロからはじめる月10万のつくり方〜Threads×高単価ASPアフィスタートBook～</a></td><td class="">Threads</td><td class="n">24,800円</td><td class="n">118</td><td class="n">2,926,400円</td><td class="n">457</td></tr><tr><td class="title"><a href="https://note.com/aiteiji_matome/n/n4deefe700c88" target="_blank" rel="noreferrer">【垢公開】１ヶ月半で月40万達成した″ていじ流″Threads×アフィリエイトの教科書</a></td><td class="">Threads</td><td class="n">9,980円</td><td class="n">228</td><td class="n">2,275,440円</td><td class="n">1,303</td></tr><tr><td class="title"><a href="https://note.com/safe_ruff2611/n/n5e8b0c3359dd" target="_blank" rel="noreferrer">フルタイム50代シンママがThreads占いで月20万円を作った完全ロードマップ</a></td><td class="">Threads</td><td class="n">12,980円</td><td class="n">147</td><td class="n">1,908,060円</td><td class="n">463</td></tr><tr><td class="title"><a href="https://note.com/abaaa_25/n/nca4e6eea96b6" target="_blank" rel="noreferrer">【900部突破】note×Threads×AI完全攻略　</a></td><td class="">Threads</td><td class="n">7,590円</td><td class="n">196</td><td class="n">1,487,640円</td><td class="n">1,372</td></tr><tr><td class="title"><a href="https://note.com/09pauai/n/n53cdfcfb12a7" target="_blank" rel="noreferrer">X運用82日で1万フォロワー、15日で1億インプ達成した僕が教えるバズの極意と思考法</a></td><td class="">X（旧Twitter）</td><td class="n">9,980円</td><td class="n">122</td><td class="n">1,217,560円</td><td class="n">1,990</td></tr><tr><td class="title"><a href="https://note.com/luna__marketing/n/n49434ccb3eb3" target="_blank" rel="noreferrer">【本アカジャンル有り】マーケターのThreads × note戦略のプロセス、脳内を全部公開</a></td><td class="">Threads</td><td class="n">4,980円</td><td class="n">230</td><td class="n">1,145,400円</td><td class="n">1,581</td></tr><tr><td class="title"><a href="https://note.com/nose_no_kurashi/n/n953ec6ca9107" target="_blank" rel="noreferrer">【中級】 3ヶ月後にThreads起点で10万円以上をつくる本気の「売れる設計」</a></td><td class="">Threads</td><td class="n">17,980円</td><td class="n">62</td><td class="n">1,114,760円</td><td class="n">872</td></tr><tr><td class="title"><a href="https://note.com/honehone_555/n/n212607f4a0ec" target="_blank" rel="noreferrer">【 3週間で１００部超 】女性向け恋愛垢で月5万以上稼げる”運用マニュアル【 始動 】”　《 Xアカウント•ポスト•note•ファンを０からつくる方法 》</a></td><td class="">X（旧Twitter）</td><td class="n">11,980円</td><td class="n">88</td><td class="n">1,054,240円</td><td class="n">565</td></tr><tr><td class="title"><a href="https://note.com/omuraisu__oishi_/n/nbad4abed6e34" target="_blank" rel="noreferrer">フォロワー500人でも月10万！企画営業ママが教える「Threads×楽天アフィ」の完全極秘ノウハウ</a></td><td class="">Threads</td><td class="n">9,080円</td><td class="n">116</td><td class="n">1,053,280円</td><td class="n">763</td></tr><tr><td class="title"><a href="https://note.com/pakucha/n/nfbee7a8e31e5" target="_blank" rel="noreferrer">【初月で月200万円突破した】Threads運用〜完全版〜</a></td><td class="">Threads</td><td class="n">19,800円</td><td class="n">49</td><td class="n">970,200円</td><td class="n">2,858</td></tr><tr><td class="title"><a href="https://note.com/suichqn_note/n/n57d970c0f76a" target="_blank" rel="noreferrer">【330部突破】本垢公開！月40万達成。Threads×noteの教科書</a></td><td class="">Threads</td><td class="n">10,480円</td><td class="n">90</td><td class="n">943,200円</td><td class="n">470</td></tr><tr><td class="title"><a href="https://note.com/enishi_supporter/n/na03037f829bf" target="_blank" rel="noreferrer">【900部達成】Threads×note｜スピ系を収益化する完全設計図【現実操術】｜1年で1,000万円作った、発信・導線・商品設計の全手順大公開</a></td><td class="">Threads</td><td class="n">9,480円</td><td class="n">96</td><td class="n">910,080円</td><td class="n">1,127</td></tr><tr><td class="title"><a href="https://note.com/oji_to_moji/n/n554560cd6970" target="_blank" rel="noreferrer">【楽天アフィリエイト×Threads】楽ちんアフィリエイトAI 〜スクショ1枚、投稿文章が10秒で完成〜(3ジャンル対応版)</a></td><td class="">Threads</td><td class="n">10,800円</td><td class="n">83</td><td class="n">896,400円</td><td class="n">3,200</td></tr><tr><td class="title"><a href="https://note.com/cool_pipit7086/n/n58df8e541ea0" target="_blank" rel="noreferrer">【再販】Threads×楽天アフィリエイト 攻略本〜最新版〜</a></td><td class="">Threads</td><td class="n">10,980円</td><td class="n">79</td><td class="n">867,420円</td><td class="n">258</td></tr><tr><td class="title"><a href="https://note.com/manetaros/n/n8567dcf99f99" target="_blank" rel="noreferrer">【Threads×アダ系note】で日給3万運用完全攻略</a></td><td class="">Threads</td><td class="n">6,980円</td><td class="n">123</td><td class="n">858,540円</td><td class="n">730</td></tr><tr><td class="title"><a href="https://note.com/nagoyadiary/n/na951d4aaa642" target="_blank" rel="noreferrer">【開発版】1度に10投稿分を生成する Threads投稿専用GPTsをver.3にアップグレードしました。</a></td><td class="">Threads</td><td class="n">9,980円</td><td class="n">76</td><td class="n">758,480円</td><td class="n">9,790</td></tr><tr><td class="title"><a href="https://note.com/chaen_channel/n/ne0bafeb85f44" target="_blank" rel="noreferrer">【完全版】AI駆動のX運用完全攻略本：0→18万フォロワー、採用700件・売上数億円以上を生み出した全ノウハウ《リサーチ、図解、投稿作成…AI効率化プロンプト＆チャットボット構築法も一挙公開。5.6万字の超大作》</a></td><td class="">X（旧Twitter）</td><td class="n">49,800円</td><td class="n">14</td><td class="n">697,200円</td><td class="n">9,997</td></tr><tr><td class="title"><a href="https://note.com/toy_saron/n/n015a426c3ad1" target="_blank" rel="noreferrer">【完全版】予約ゼロから100名突破！再現できるThreads集客の仕組み</a></td><td class="">Threads</td><td class="n">9,980円</td><td class="n">68</td><td class="n">678,640円</td><td class="n">513</td></tr><tr><td class="title"><a href="https://note.com/sanrenkyu/n/n7e1022fa751f" target="_blank" rel="noreferrer">【X・Threads運用不要】noteだけで月10万円を売り上げた10STEP</a></td><td class="">X（旧Twitter）・Threads</td><td class="n">9,800円</td><td class="n">64</td><td class="n">627,200円</td><td class="n">4,387</td></tr><tr><td class="title"><a href="https://note.com/asa5ji_note/n/n0b754d6557d1" target="_blank" rel="noreferrer">【Threads】初心者が10日で1,000フォロワー＆note200部。交流ゼロで伸ばせる“7日間ドリル”</a></td><td class="">Threads</td><td class="n">9,980円</td><td class="n">59</td><td class="n">588,820円</td><td class="n">1,122</td></tr></tbody></table></div><p class="hint">見出しをクリックすると並べ替えできます。</p></section>
+<footer><p>noteの公開API（検索・ハッシュタグ・記事詳細）から集めた数字です。検索で見つかった記事だけを数えているので、noteの全記事ではありません。
+「評価の人数」は有料記事を買った人だけが付けられる評価の人数で、購入者数そのものではなく下限です。「売上の下限」は評価の人数×価格で計算しています。</p></footer>
+</div></main>
+<script>
+document.addEventListener('click', function (e) {
+  var th = e.target.closest ? e.target.closest('th[data-sort]') : null; if (!th) return;
+  sortBy(th);
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  var th = e.target.closest ? e.target.closest('th[data-sort]') : null; if (!th) return;
+  e.preventDefault(); sortBy(th);
+});
+function sortBy(th) {
+  var table = th.closest('table'), tb = table.tBodies[0];
+  var idx = Array.prototype.indexOf.call(th.parentNode.children, th);
+  var desc = th.getAttribute('data-dir') !== 'desc';
+  Array.prototype.forEach.call(table.querySelectorAll('th[data-sort]'), function (h) {
+    h.removeAttribute('data-dir'); h.setAttribute('aria-sort', 'none');
+  });
+  th.setAttribute('data-dir', desc ? 'desc' : 'asc');
+  th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+  var num = th.classList.contains('n');
+  var rows = Array.prototype.slice.call(tb.rows);
+  rows.sort(function (a, b) {
+    var x = a.cells[idx].textContent.trim(), y = b.cells[idx].textContent.trim();
+    if (num) {
+      var nx = parseFloat(x.replace(/[^0-9.\-]/g, '')), ny = parseFloat(y.replace(/[^0-9.\-]/g, ''));
+      if (isNaN(nx)) { nx = -Infinity; }
+      if (isNaN(ny)) { ny = -Infinity; }
+      return desc ? ny - nx : nx - ny;
+    }
+    return desc ? y.localeCompare(x, 'ja') : x.localeCompare(y, 'ja');
+  });
+  rows.forEach(function (r) { tb.appendChild(r); });
+}
+</script>
+
+<script>
+function gfilter(sel){
+  var v = sel.value, t = document.getElementById(sel.getAttribute('data-for'));
+  Array.prototype.forEach.call(t.querySelectorAll('tbody tr'), function(r){
+    r.style.display = (!v || ('\t'+r.getAttribute('data-g')+'\t').indexOf('\t'+v+'\t') >= 0) ? '' : 'none';
+  });
+}
+</script>
+</body></html>
